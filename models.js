@@ -6,7 +6,7 @@ const blogPostSchema = mongoose.Schema({
     
     title: {type: String, required: true},
     content: {type: String, required: true},
-    author: [first: String, last: String],
+    author: {firstName: String, lastName: String},
     dateCreated: {type: Date, default: Date.now}
 });
 // return the fields that you want exposed
