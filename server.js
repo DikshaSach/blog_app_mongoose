@@ -30,10 +30,7 @@ app.get('/posts', (req,res)=>{
             
         });
     })
-     /* res.json({}
-          posts: posts.map(
-              post => post.serialize()));
-    })*/
+     
         .catch(err =>{
             console.error(err);
             res.status(500).json({message: 'Internal test server error'});
@@ -94,7 +91,7 @@ updateableFields.forEach(field =>{
 });
 
 BlogPost 
-    .findByIdAndUpdate(req.arams.id, {$set:toUpdate})
+    .findByIdAndUpdate(req.params.id, {$set:toUpdate})
     .then(post => res.status(204).end())
     .catch(err => res.status(500).json({
         message:'Interal server error'

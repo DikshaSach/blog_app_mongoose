@@ -3,20 +3,20 @@ const uuid = require('uuid');
 mongoose.Promise = global.Promise;
 
 const blogPostSchema = mongoose.Schema({
-    id: {type: String, required: true},
+    
     title: {type: String, required: true},
     content: {type: String, required: true},
-    author: {type: String, required: true}
-    //created: {type: String, required: true}
+    author: [first: String, last: String],
+    dateCreated: {type: Date, default: Date.now}
 });
 // return the fields that you want exposed
 blogPostSchema.methods.serialize = function(){
     return {
-        id: uuid.v4(),
+        id: this._id,
         title: this.title,
         content: this.content,
-        author: this.author
-        //created: this.created
+        author: this.author,
+        dateCreated: this.dateCreated
     };
 }
 // all methods must be defined before we make call to model
